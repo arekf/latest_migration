@@ -1,5 +1,5 @@
 require "rails_helper"
-require "../../lib/latest_migration"
+require_relative "../../../../lib/latest_migration"
 
 RSpec.describe LatestMigration::Base do
   it "opens latest migration file in text editor" do

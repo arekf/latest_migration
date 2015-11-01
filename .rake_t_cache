@@ -1,8 +1,0 @@
-rake build             # Build latest_migration-0.0.1.gem into the pkg directory
-rake clobber_rdoc      # Remove RDoc HTML files
-rake install           # Build and install latest_migration-0.0.1.gem into system gems
-rake install:local     # Build and install latest_migration-0.0.1.gem into system gems without network access
-rake latest_migration  # Opens latest database migration file in the text editor
-rake rdoc              # Build RDoc HTML files
-rake release           # Create tag v0.0.1 and build and push latest_migration-0.0.1.gem to Rubygems
-rake rerdoc            # Rebuild RDoc HTML files
