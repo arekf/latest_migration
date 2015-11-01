@@ -9,9 +9,10 @@ Gem::Specification.new do |s|
   s.version     = LatestMigration::VERSION
   s.authors     = ["Arkadiusz Fal"]
   s.email       = ["arek@arekf.net"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of LatestMigration."
-  s.description = "TODO: Description of LatestMigration."
+  s.homepage    = "https://github.com/arekf/latest_migration"
+  s.summary     = "Rake task to open latest migration file in text editor"
+  s.description = "Provides command to open latest migration file in text editor" \
+                  "or just display latest migration file path in the standard output."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
@@ -19,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.4"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
 end

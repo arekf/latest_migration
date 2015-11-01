@@ -1,0 +1,1 @@
+LatestMigration::Base.editor = :mine
