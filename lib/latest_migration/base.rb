@@ -4,8 +4,10 @@ module LatestMigration
       def open_latest_migration
         puts "Opening #{latest_migration_filename}"
         system editor_command
+      # :nocov:
       rescue LatestMigration::Errors::MigrationsNotFoundError
         puts "Could not find any migration in this Rails application"
+      # :nocov:
       end
 
       def latest_migration_path

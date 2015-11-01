@@ -1,4 +1,5 @@
 module LatestMigration
+  # :nocov:
   module Errors
     class MigrationsNotFoundError < StandardError
       def message
@@ -18,4 +19,5 @@ module LatestMigration
       end
     end
   end
+  # :nocov:
 end
