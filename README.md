@@ -3,13 +3,13 @@
 # latest_migration
 
 `latest_migration` is a Ruby on Rails gem that allows you to open your latest
-migration file in text editor. It saves the time of selecting, copying 
+migration file in text editor. It saves the time of selecting, copying
 and opening the file in your editor.
 
 ## Installation
 *   Add `latest_migration` to your Gemfile:
 ```ruby
-gem 'latest_migration', group: development
+gem 'latest_migration', group: :development
 ```
 
 * Install with: bundle install
