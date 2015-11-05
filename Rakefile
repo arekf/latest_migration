@@ -14,10 +14,10 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-begin
-  require 'rspec/core/rake_task'
-  RSpec::Core::RakeTask.new(:spec)
-rescue LoadError
+task :spec do
+  Dir.chdir 'spec/dummy' do
+    exec 'rspec'
+  end
 end
 
 task default: [:spec]

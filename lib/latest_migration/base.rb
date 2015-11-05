@@ -11,7 +11,10 @@ module LatestMigration
       end
 
       def latest_migration_path
-        migrations_filenames.sort.last or fail LatestMigration::Errors::MigrationsNotFoundError
+        File.join(
+            Rails.root,
+            (latest_migration_filename or fail LatestMigration::Errors::MigrationsNotFoundError)
+        )
       end
 
       def editor
@@ -22,25 +25,12 @@ module LatestMigration
 
       private
 
-      def latest_migration_filename
-        File.basename(latest_migration_path)
-      end
-
       def editor_command
         "#{editor} #{latest_migration_path}"
       end
 
-      def migrations_filenames
-        Dir.glob(migrations_filename_pattern)
-      end
-
-      def migrations_filename_pattern
-        File.join(migrations_dir_path, "*.rb")
-      end
-
-      def migrations_dir_path
-        dir_path = Rails.root.join("db", "migrate") if defined?(Rails) or fail LatestMigration::Errors::RailsNotFound
-        dir_path if Dir.exist?(dir_path) or fail LatestMigration::Errors::MigrationsDirNotFoundError
+      def latest_migration_filename
+        ActiveRecord::Migrator.migrations(ActiveRecord::Migrator.migrations_path).last.try(:filename)
       end
     end
   end
