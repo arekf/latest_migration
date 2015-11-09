@@ -1,17 +1,15 @@
 module LatestMigration
-  # :nocov:
   module Errors
     class MigrationsNotFoundError < StandardError
-      def message
-        "Could not find any migration in this Rails application"
+      def initialize
+        super("Could not find any migration in this Rails application")
       end
     end
 
     class RailsNotFound < StandardError
-      def message
-        "Could not load Rails environment"
+      def initialize
+        super("Could not load Rails environment")
       end
     end
   end
-  # :nocov:
 end

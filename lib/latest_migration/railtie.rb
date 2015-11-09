@@ -6,9 +6,7 @@ module LatestMigration
     railtie_name :latest_migration
 
     rake_tasks do
-      # :nocov:
       load "tasks/latest_migration_tasks.rake"
-      # :nocov:
     end
   end
 end

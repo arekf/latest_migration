@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe LatestMigration::Base do
-    before(:all) do
+  before(:each) do
     ActiveRecord::Migrator.migrations_paths = File.join(Rails.root, "db/migrate")
   end
 
@@ -19,5 +19,10 @@ RSpec.describe LatestMigration::Base do
     # editor gets overrided in the initializer, see:
     # spec/dummy/config/initializers/latest_migration.rb
     expect(described_class.editor).to eq :mine
+  end
+
+  it "fails when there are no migrations" do
+    ActiveRecord::Migrator.migrations_paths = "dummy"
+    expect { described_class.latest_migration_path }.to raise_error(LatestMigration::Errors::MigrationsNotFoundError)
   end
 end
