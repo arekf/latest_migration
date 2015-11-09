@@ -1,10 +1,13 @@
-require_relative "../../../../spec/rails_helper"
-require_relative "../../../../lib/latest_migration"
+require "rails_helper"
 
 RSpec.describe LatestMigration::Base do
+    before(:all) do
+    ActiveRecord::Migrator.migrations_paths = File.join(Rails.root, "db/migrate")
+  end
+
   it "opens latest migration file in text editor" do
     expect(described_class).to receive("system").with(described_class.send(:editor_command))
-    expect(STDOUT).to receive("puts").with("Opening db/migrate/20151101184727_create_tags.rb")
+    expect(STDOUT).to receive("puts").with(/20151101184727_create_tags.rb/)
     described_class.open_latest_migration
   end
 
